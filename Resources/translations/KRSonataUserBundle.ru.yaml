@@ -5,3 +5,5 @@ EDIT:   Изменение
 EXPORT: Экспорт
 LIST:   Список
 VIEW:   Просмотр
+field.label_roles_editable: 'Редактируемые роли'
+field.label_roles_readonly: 'Неизменяемые роли'

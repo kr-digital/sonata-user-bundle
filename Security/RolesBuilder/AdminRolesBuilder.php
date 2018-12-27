@@ -98,7 +98,7 @@ final class AdminRolesBuilder implements AdminRolesBuilderInterface
                     'label' => $key,
                     'role_translated' => $this->translateRole($role, $domain),
                     'is_granted' => $this->isMaster($admin) || $this->authorizationChecker->isGranted($role),
-                    'admin_label' => $admin->getTranslator()->trans($admin->getLabel()),
+                    'admin_label' => $this->translator->trans($admin->getLabel(), [], $admin->getTranslationDomain()),
                 ];
             }
         }
