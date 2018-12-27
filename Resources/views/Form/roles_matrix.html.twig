@@ -24,7 +24,7 @@ partially taken from https://github.com/sonata-project/SonataUserBundle
     <tbody>
     {% for admin_label, roles in grouped_roles %}
         <tr>
-            <th>{{ admin_label }}</th>
+            <th>{{ admin_label|trans({}, 'KRSonataUserBundle') }}</th>
             {% for role, attributes in roles|sort %}
                 <td>
                     {{ form_widget(attributes.form, { label: false }) }}
