@@ -48,6 +48,7 @@ final class AdminRolesBuilderTest extends TestCase
         $this->securityHandler = $this->createMock(SecurityHandlerInterface::class);
         $this->authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
         $this->admin = $this->createMock(AdminInterface::class);
+        $this->admin->method('getCode')->willReturn('sonata.admin.bar');
         $this->tokenStorage = $this->createMock(TokenStorageInterface::class);
         $this->token = $this->createMock(TokenInterface::class);
         $this->pool = $this->createMock(Pool::class);
@@ -136,28 +137,28 @@ final class AdminRolesBuilderTest extends TestCase
                 'label' => 'GUEST',
                 'role_translated' => 'ROLE_SONATA_FOO_GUEST',
                 'is_granted' => false,
-                'admin_label' => 'Foo',
+                'admin_label' => 'sonata.admin.bar',
             ],
             'ROLE_SONATA_FOO_STAFF' => [
                 'role' => 'ROLE_SONATA_FOO_STAFF',
                 'label' => 'STAFF',
                 'role_translated' => 'ROLE_SONATA_FOO_STAFF',
                 'is_granted' => false,
-                'admin_label' => 'Foo',
+                'admin_label' => 'sonata.admin.bar',
             ],
             'ROLE_SONATA_FOO_EDITOR' => [
                 'role' => 'ROLE_SONATA_FOO_EDITOR',
                 'label' => 'EDITOR',
                 'role_translated' => 'ROLE_SONATA_FOO_EDITOR',
                 'is_granted' => false,
-                'admin_label' => 'Foo',
+                'admin_label' => 'sonata.admin.bar',
             ],
             'ROLE_SONATA_FOO_ADMIN' => [
                 'role' => 'ROLE_SONATA_FOO_ADMIN',
                 'label' => 'ADMIN',
                 'role_translated' => 'ROLE_SONATA_FOO_ADMIN',
                 'is_granted' => false,
-                'admin_label' => 'Foo',
+                'admin_label' => 'sonata.admin.bar',
             ],
         ];
 
