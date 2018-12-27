@@ -1,0 +1,60 @@
+services:
+    kr_sonata_user.editable_role_builder:
+        class: KR\SonataUserBundle\Security\EditableRolesBuilder
+        public: false
+        arguments:
+            - "@security.token_storage"
+            - "@security.authorization_checker"
+            - "@sonata.admin.pool"
+        calls:
+            - ["setTranslator", ["@translator"]]
+
+    kr_sonata_user.form.type.security_roles:
+        class: KR\SonataUserBundle\Form\Type\SecurityRolesType
+        public: true
+        arguments:
+            - "@kr_sonata_user.editable_role_builder"
+        tags:
+            - {name: "form.type", alias: "sonata_security_roles"}
+
+    kr_sonata_user.matrix_roles_builder:
+        class: KR\SonataUserBundle\Security\RolesBuilder\MatrixRolesBuilder
+        public: false
+        arguments:
+            - "@security.token_storage"
+            - "@kr_sonata_user.admin_roles_builder"
+            - "@kr_sonata_user.security_roles_builder"
+
+    kr_sonata_user.admin_roles_builder:
+        class: KR\SonataUserBundle\Security\RolesBuilder\AdminRolesBuilder
+        public: false
+        arguments:
+            - "@security.authorization_checker"
+            - "@sonata.admin.pool"
+            - "@translator"
+
+    kr_sonata_user.security_roles_builder:
+        class: KR\SonataUserBundle\Security\RolesBuilder\SecurityRolesBuilder
+        public: false
+        arguments:
+            - "@security.authorization_checker"
+            - "@sonata.admin.pool"
+            - "@translator"
+            - "%security.role_hierarchy.roles%"
+
+    kr_sonata_user.form.roles_matrix_type:
+        class: KR\SonataUserBundle\Form\Type\RolesMatrixType
+        public: false
+        arguments:
+            - "@kr_sonata_user.matrix_roles_builder"
+        tags:
+            - {name: "form.type"}
+
+    kr_sonata_user.roles_matrix_extension:
+        class: KR\SonataUserBundle\Twig\RolesMatrixExtension
+        public: false
+        arguments:
+            - "@kr_sonata_user.matrix_roles_builder"
+        tags:
+            - {name: "twig.extension"}
+

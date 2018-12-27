@@ -1,0 +1,25 @@
+{#
+
+This file is part of the KRSonataUserBundle package.
+
+(c) KR Digital <box@gkr.digital>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+partially taken from https://github.com/sonata-project/SonataUserBundle
+    SonataUserBundle is released under the MIT License. See https://github.com/sonata-project/SonataUserBundle/blob/4.x/LICENSE for details.
+    (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+#}
+
+{% for role, attributes in roles|sort %}
+    <li>{{ form_widget(attributes.form, {label: attributes.role_translated, value: attributes.role}) }}</li>
+    {% if not attributes.is_granted %}
+        <script>
+            $('input[value="{{ role }}"]').iCheck('disable')
+            $('form').on('submit', function () {
+                $('input[value="{{ role }}"]').iCheck('enable')
+            })
+        </script>
+    {% endif %}
+{% endfor %}

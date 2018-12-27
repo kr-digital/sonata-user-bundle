@@ -1,0 +1,7 @@
+ALL: Все
+CREATE: Создание
+DELETE: Удаление
+EDIT:   Изменение
+EXPORT: Экспорт
+LIST:   Список
+VIEW:   Просмотр

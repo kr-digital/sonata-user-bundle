@@ -1,0 +1,41 @@
+{#
+
+This file is part of the KRSonataUserBundle package.
+
+(c) KR Digital <box@gkr.digital>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+partially taken from https://github.com/sonata-project/SonataUserBundle
+    SonataUserBundle is released under the MIT License. See https://github.com/sonata-project/SonataUserBundle/blob/4.x/LICENSE for details.
+    (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+#}
+
+{% block kr_sonata_security_roles_widget %}
+    {% spaceless %}
+        <div class="editable">
+            <h4>{{ 'field.label_roles_editable'|trans({}, "KRSonataUserBundle") }}</h4>
+            {{ block('choice_widget') }}
+        </div>
+        {% if read_only_choices|length > 0 %}
+            <div class="readonly">
+                <h4>{{ 'field.label_roles_readonly'|trans({}, "KRSonataUserBundle") }}</h4>
+                <ul>
+                    {% for choice in read_only_choices %}
+                        <li>{{ choice }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}
+
+{% block kr_sonata_roles_matrix_widget %}
+    {% spaceless %}
+        {{ renderMatrix(form)|raw }}
+        <ul class="list-unstyled">
+            {{ renderRolesList(form)|raw }}
+        </ul>
+    {% endspaceless %}
+{% endblock %}
