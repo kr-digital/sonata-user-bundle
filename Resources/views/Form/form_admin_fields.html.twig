@@ -13,7 +13,7 @@ partially taken from https://github.com/sonata-project/SonataUserBundle
 #}
 
 {% block kr_sonata_security_roles_widget %}
-    {% spaceless %}
+    {% apply spaceless %}
         <div class="editable">
             <h4>{{ 'field.label_roles_editable'|trans({}, "KRSonataUserBundle") }}</h4>
             {{ block('choice_widget') }}
@@ -28,14 +28,14 @@ partially taken from https://github.com/sonata-project/SonataUserBundle
                 </ul>
             </div>
         {% endif %}
-    {% endspaceless %}
+    {% endapply %}
 {% endblock %}
 
 {% block kr_sonata_roles_matrix_widget %}
-    {% spaceless %}
+    {% apply spaceless %}
         {{ renderMatrix(form)|raw }}
         <ul class="list-unstyled">
             {{ renderRolesList(form)|raw }}
         </ul>
-    {% endspaceless %}
+    {% endapply %}
 {% endblock %}
