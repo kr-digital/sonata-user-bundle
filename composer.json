@@ -1,5 +1,5 @@
 {
-    "name": "kr/sonata-user-bundle",
+    "name": "kr-digital/sonata-user-bundle",
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
